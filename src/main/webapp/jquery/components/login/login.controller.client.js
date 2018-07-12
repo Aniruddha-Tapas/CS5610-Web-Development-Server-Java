@@ -7,9 +7,7 @@
     function main() {
         $usernameFld = $('#username');
         $passwordFld = $('#password');
-
         $loginBtn = $('#login');
-
         $loginBtn.click(login);
     }
     function login() {

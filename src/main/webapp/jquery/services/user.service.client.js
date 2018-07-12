@@ -10,11 +10,25 @@ function UserServiceClient() {
     this.logout = logout;
     this.profile = profile;
     this.updateProfile = updateProfile;
-
-    this.url =
-        '/api/user';
+    this.url = '/api/user';
     var self = this;
 
+    function createUser(user) {
+        return fetch(self.url, {
+            method: 'post',
+            body: JSON.stringify(user),
+            headers: {
+                'content-type': 'application/json'
+            }
+        });
+    }
+
+    function findAllUsers() {
+        return fetch(self.url)
+            .then(function (response) {
+                return response.json();
+            });
+    }
 
     function findUserById(userId) {
         return fetch(self.url + '/' + userId)
@@ -23,21 +37,37 @@ function UserServiceClient() {
             });
     }
 
-    function updateProfile(userId, user) {
-        return fetch('/api/profile' + '/' + userId, {
+    function updateUser(userId, user) {
+        return fetch(self.url + '/' + userId, {
             method: 'put',
             body: JSON.stringify(user),
             headers: {
                 'content-type': 'application/json'
             }
-        })
-            .then(function(response){
+        }).then(function(response){
                 if(response.bodyUsed) {
                     return response.json();
                 } else {
                     return null;
                 }
             });
+    }
+
+    function deleteUser(userId) {
+        return fetch(self.url + '/' + userId, {
+            method: 'delete'
+        });
+    }
+
+    function register(user) {
+        return fetch('/api/register', {
+            method: 'post',
+            body: JSON.stringify(user),
+            credentials: 'include',
+            headers: {
+            'content-type': 'application/json'
+            }
+        });
     }
     
     function login(user) {
@@ -54,20 +84,7 @@ function UserServiceClient() {
     function logout() {
         return fetch('/api/logout', {
             method: 'post',
-            headers: {
-                'content-type': 'application/json'
-            }
-        });
-    }
-
-    function register(user) {
-        return fetch('/api/register/', {
-            method: 'post',
-            body: JSON.stringify(user),
-            credentials: 'include',
-            headers: {
-            'content-type': 'application/json'
-            }
+            credentials: 'include'
         });
     }
 
@@ -80,14 +97,8 @@ function UserServiceClient() {
             });
      }
 
-    function deleteUser(userId) {
-        return fetch(self.url + '/' + userId, {
-            method: 'delete'
-        });
-    }
-
-    function updateUser(userId, user) {
-        return fetch(self.url + '/' + userId, {
+    function updateProfile(userId, user) {
+        return fetch('/api/profile' + '/' + userId, {
             method: 'put',
             body: JSON.stringify(user),
             headers: {
@@ -101,22 +112,5 @@ function UserServiceClient() {
                     return null;
                 }
             });
-    }
-
-    function findAllUsers() {
-        return fetch(self.url)
-            .then(function (response) {
-                return response.json();
-            });
-    }
-
-    function createUser(user) {
-        return fetch(self.url, {
-            method: 'post',
-            body: JSON.stringify(user),
-            headers: {
-                'content-type': 'application/json'
-            }
-        });
     }
 }

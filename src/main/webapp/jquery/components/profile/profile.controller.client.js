@@ -18,7 +18,6 @@
         $emailFld = $('#emailFld');
         $roleFld = $('#roleFld');
         $dobFld = $('#dobFld');
-
         $updateBtn = $('#updateBtn');
         $logoutBtn = $('#logoutBtn');
 

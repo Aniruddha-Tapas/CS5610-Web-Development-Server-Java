@@ -36,6 +36,12 @@ public class UserService {
         return null;
     }
 
+
+    @GetMapping("/api/user")
+    public List<User> findAllUsers() {
+        return (List<User>) userRepository.findAll();
+    }
+
     //UPDATE USER
     @PutMapping("/api/user/{userId}")
     public User updateUser(@PathVariable("userId") String userId,
@@ -60,8 +66,9 @@ public class UserService {
         userRepository.deleteById(userId);
     }
 
+    //REGISTER USER
     @PostMapping("/api/register")
-    public User register(@RequestBody User user, HttpSession session) {
+    public User register(@RequestBody User user, HttpSession session,  HttpServletResponse httpServletResponse) {
         User user1 = userRepository.findUserByUsername(user.getUsername());
         if (user1 == null) {
             User cUser = userRepository.save(user);
@@ -69,10 +76,12 @@ public class UserService {
             return cUser;
         } else {
             session.invalidate();
+            httpServletResponse.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE);
             return null;
         }
     }
 
+    //READ USER PROFILE
     @GetMapping("/api/profile")
     public User profile(HttpSession session) {
         User currentUser = (User) session.getAttribute("currentUser");
@@ -83,54 +92,27 @@ public class UserService {
         return null;
     }
 
+    //LOGIN
     @PostMapping("/api/login")
-    public User login(@RequestBody User user, HttpSession session) {
+    public User login(@RequestBody User user, HttpSession session, HttpServletResponse httpServletResponse) {
         user = userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
         if (user != null) {
             session.setAttribute("currentUser", user);
             return user;
         } else {
             session.invalidate();
+            httpServletResponse.setStatus(HttpServletResponse.SC_CONFLICT);
             return null;
         }
     }
 
+
+    //LOGOUT
     @PostMapping("/api/logout")
-    public void logout( HttpSession session) {
-        session.removeAttribute("currentUser");
+    public void logout(HttpSession session) {
         session.invalidate();
     }
 
-
-    /*
-    //REGISTER USER
-    @PostMapping("/api/register")
-    public User register(@RequestBody User user, HttpServletResponse httpServletResponse) {
-        User user1 = userRepository.findUserByUsername(user.getUsername());
-        if (user1 == null) {
-            return userRepository.save(user);
-        } else {
-            httpServletResponse.setStatus(HttpServletResponse.SC_CONFLICT);
-            return null;
-        }
-    }
-
-    //LOGIN USER
-    @PostMapping("/api/login")
-    public User login(@RequestBody User user, HttpServletResponse httpServletResponse) {
-        User user1 = userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
-        if (user1 != null) {
-            return user1;
-        } else {
-            httpServletResponse.setStatus(HttpServletResponse.SC_CONFLICT);
-            return null;
-        }
-    }*/
-
-    @GetMapping("/api/user")
-    public List<User> findAllUsers() {
-        return (List<User>) userRepository.findAll();
-    }
 
     //UPDATE USER PROFILE
     @PutMapping("/api/profile/{userId}")

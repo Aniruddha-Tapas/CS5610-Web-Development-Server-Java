@@ -1,10 +1,8 @@
 package com.example.wedevsummer2assignment1.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.time.*;
 
 @Entity
 public class User {
@@ -20,6 +18,7 @@ public class User {
     private String email;
     private String role;
     private Date dateOfBirth;
+
 
     public int getId() {
         return id;
@@ -94,22 +93,16 @@ public class User {
     }
 
     public void setUser(User user) {
-        this.firstName = user.firstName != null ?
-                user.firstName : this.firstName;
-        this.lastName = user.lastName != null ?
-                user.lastName : this.lastName;
-        this.username = user.username != null ?
-                user.username : this.username;
-        this.password = user.password != null ?
-                user.password : this.password;
-        this.phone = user.phone != null ?
-                user.phone : this.phone;
-        this.email = user.email != null ?
-                user.email : this.email;
-        this.dateOfBirth = user.dateOfBirth != null ?
-                user.dateOfBirth : this.dateOfBirth;
-        this.role = user.role != null ?
-                user.role : this.role;
-    }
-}
 
+        this.firstName = user.firstName != null ? user.firstName : this.firstName;
+        this.lastName = user.lastName != null ? user.lastName : this.lastName;
+        this.username = user.username != null ? user.username : this.username;
+        this.password = user.password != null ? user.password : this.password;
+        this.phone = user.phone != null ? user.phone : this.phone;
+        this.email = user.email != null ? user.email : this.email;
+        this.role = user.role != null ? user.role : this.role;
+        this.dateOfBirth = user.dateOfBirth != null ? user.dateOfBirth : this.dateOfBirth;
+
+    }
+
+}
