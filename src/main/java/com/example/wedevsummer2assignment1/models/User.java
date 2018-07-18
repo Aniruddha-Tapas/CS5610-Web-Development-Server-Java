@@ -17,6 +17,7 @@ public class User {
     private String phone;
     private String email;
     private String role;
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dateOfBirth;
 
 
