@@ -32,7 +32,9 @@ public class ModuleService {
 
     @DeleteMapping("/api/module/{moduleId}")
     public void deleteModule(@PathVariable("moduleId") int moduleId){
-        moduleRepository.deleteById(moduleId);
+        if(moduleRepository.findById(moduleId).isPresent()) {
+            moduleRepository.deleteById(moduleId);
+        }
     }
 
     @GetMapping("/api/module")
@@ -42,7 +44,9 @@ public class ModuleService {
 
     @GetMapping("/api/module/{moduleId}")
     Module findModuleById(@PathVariable("moduleId") int moduleId){
-        return moduleRepository.findById(moduleId).get();
+        if (moduleRepository.findById(moduleId).isPresent())
+            return moduleRepository.findById(moduleId).get();
+        return null;
     }
 
     @GetMapping("/api/course/{courseId}/module")
@@ -64,6 +68,4 @@ public class ModuleService {
         }
         return null;
     }
-
-
 }
