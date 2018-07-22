@@ -3,6 +3,8 @@ package com.example.wedevsummer2assignment1.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Lesson {
@@ -14,6 +16,9 @@ public class Lesson {
     @ManyToOne
     @JsonIgnore
     private Module module;
+    @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Topic> topics = new ArrayList<>();
 
     public Lesson() {
     }
@@ -42,7 +47,15 @@ public class Lesson {
         this.module = module;
     }
 
+    public List<Topic> getTopics() {
+        return topics;
+    }
+
+    public void setTopics(List<Topic> topics) {
+        this.topics = topics;
+    }
+
     public void setLesson(Lesson lesson) {
-        this.title = lesson.title != null ?  lesson.title : this.title;
+        this.title = lesson.title != null ? lesson.title : this.title;
     }
 }
