@@ -1,6 +1,5 @@
 package com.example.wedevsummer2assignment1.services;
 
-
 import com.example.wedevsummer2assignment1.models.Lesson;
 import com.example.wedevsummer2assignment1.models.Topic;
 import com.example.wedevsummer2assignment1.repositories.CourseRepository;
@@ -28,8 +27,8 @@ public class TopicService {
     @Autowired
     CourseRepository courseRepository;
 
-    @PostMapping("/api/lesson/{lessonId}/topic")
-    Topic createTopic(@PathVariable("lessonId") int lessonId,
+    @PostMapping("/api/course/{courseId}/module/{moduleId}/lesson/{lessonId}/topic")
+    Topic createTopic(@PathVariable(name="lessonId") int lessonId,
                         @RequestBody Topic topic){
         if(lessonRepository.findById(lessonId).isPresent()){
             Lesson lesson = lessonRepository.findById(lessonId).get();
@@ -58,8 +57,8 @@ public class TopicService {
         return null;
     }
 
-    @GetMapping("/api//lesson/{lessonId}/topic")
-    List<Topic> findAllTopicsForLesson(@PathVariable("lessonId") int lessonId){
+    @GetMapping("/api/course/{courseId}/module/{moduleId}/lesson/{lessonId}/topic")
+    List<Topic> findAllTopicsForLesson(@PathVariable(name="lessonId") int lessonId){
         if(lessonRepository.findById(lessonId).isPresent()){
             Lesson lesson = lessonRepository.findById(lessonId).get();
             return lesson.getTopics();
