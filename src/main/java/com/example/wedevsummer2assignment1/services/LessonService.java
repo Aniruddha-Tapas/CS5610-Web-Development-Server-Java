@@ -11,17 +11,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*")
 public class LessonService {
-
-    @Autowired
-    LessonRepository lessonRepository;
 
     @Autowired
     ModuleRepository moduleRepository;
 
     @Autowired
-    CourseRepository courseRepository;
+    LessonRepository lessonRepository;
 
     @PostMapping("/api/course/{courseId}/module/{moduleId}/lesson")
     Lesson createLesson(@PathVariable(name="moduleId") int moduleId,

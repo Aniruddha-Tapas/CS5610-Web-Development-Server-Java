@@ -3,6 +3,8 @@ package com.example.wedevsummer2assignment1.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Topic {
@@ -14,6 +16,11 @@ public class Topic {
     @ManyToOne
     @JsonIgnore
     private Lesson lesson;
+    @OneToMany(mappedBy = "topic")
+    @OrderBy("orderNumber ASC")
+    @JsonIgnore
+    private List<Widget> widgets = new ArrayList<>();
+
 
     public Topic() {
     }
@@ -42,8 +49,15 @@ public class Topic {
         this.lesson = lesson;
     }
 
-    public void setTopic(Topic topic) {
-        this.title = topic.title != null ? topic.title : this.title;
+    public List<Widget> getWidgets() {
+        return widgets;
     }
 
+    public void setWidgets(List<Widget> widgets) {
+        this.widgets = widgets;
+    }
+
+    public void setTopic(Topic topic){
+        this.title = topic.title != null ? topic.title : this.title;
+    }
 }

@@ -12,20 +12,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*")
 public class TopicService {
-
-    @Autowired
-    TopicRepository topicRepository;
 
     @Autowired
     LessonRepository lessonRepository;
 
     @Autowired
-    ModuleRepository moduleRepository;
-
-    @Autowired
-    CourseRepository courseRepository;
+    TopicRepository topicRepository;
 
     @PostMapping("/api/course/{courseId}/module/{moduleId}/lesson/{lessonId}/topic")
     Topic createTopic(@PathVariable(name="lessonId") int lessonId,
