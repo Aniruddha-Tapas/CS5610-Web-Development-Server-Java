@@ -1,6 +1,6 @@
-package com.example.wedevsummer2assignment1.repositories;
+package com.example.webdev_summer2_server_java.repositories;
 
-import com.example.wedevsummer2assignment1.models.User;
+import com.example.webdev_summer2_server_java.models.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

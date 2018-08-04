@@ -1,4 +1,4 @@
-package com.example.wedevsummer2assignment1;
+package com.example.webdev_summer2_server_java;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

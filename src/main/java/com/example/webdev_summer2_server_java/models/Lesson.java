@@ -1,4 +1,4 @@
-package com.example.wedevsummer2assignment1.models;
+package com.example.webdev_summer2_server_java.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;

@@ -1,8 +1,7 @@
-package com.example.wedevsummer2assignment1.models;
+package com.example.webdev_summer2_server_java.models;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.time.*;
 
 @Entity
 public class User {

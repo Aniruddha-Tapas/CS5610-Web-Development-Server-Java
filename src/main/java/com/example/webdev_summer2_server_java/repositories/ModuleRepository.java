@@ -1,6 +1,6 @@
-package com.example.wedevsummer2assignment1.repositories;
+package com.example.webdev_summer2_server_java.repositories;
 
-import com.example.wedevsummer2assignment1.models.Module;
+import com.example.webdev_summer2_server_java.models.Module;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ModuleRepository extends CrudRepository<Module, Integer> {

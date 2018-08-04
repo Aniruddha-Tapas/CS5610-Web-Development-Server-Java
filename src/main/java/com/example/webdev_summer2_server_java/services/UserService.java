@@ -1,7 +1,7 @@
-package com.example.wedevsummer2assignment1.services;
+package com.example.webdev_summer2_server_java.services;
 
-import com.example.wedevsummer2assignment1.models.User;
-import com.example.wedevsummer2assignment1.repositories.UserRepository;
+import com.example.webdev_summer2_server_java.models.User;
+import com.example.webdev_summer2_server_java.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

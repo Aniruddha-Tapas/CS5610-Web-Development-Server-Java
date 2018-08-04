@@ -1,10 +1,9 @@
-package com.example.wedevsummer2assignment1.services;
+package com.example.webdev_summer2_server_java.services;
 
-import com.example.wedevsummer2assignment1.models.Lesson;
-import com.example.wedevsummer2assignment1.models.Module;
-import com.example.wedevsummer2assignment1.repositories.CourseRepository;
-import com.example.wedevsummer2assignment1.repositories.LessonRepository;
-import com.example.wedevsummer2assignment1.repositories.ModuleRepository;
+import com.example.webdev_summer2_server_java.models.Lesson;
+import com.example.webdev_summer2_server_java.models.Module;
+import com.example.webdev_summer2_server_java.repositories.LessonRepository;
+import com.example.webdev_summer2_server_java.repositories.ModuleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

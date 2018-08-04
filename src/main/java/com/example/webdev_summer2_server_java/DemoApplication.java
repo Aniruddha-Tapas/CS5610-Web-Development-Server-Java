@@ -1,4 +1,4 @@
-package com.example.wedevsummer2assignment1;
+package com.example.webdev_summer2_server_java;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
